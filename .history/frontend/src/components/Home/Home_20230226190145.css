@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Space+Grotesk&display=swap');
+
+body {
+  font-family: "Space Grotesk","Roboto",Verdana,Arial,sans-serif !important;
+  background: #fafafa !important;
+}
+.btn {
+  border-radius: 0 !important;
+}
+.center {
+  text-align: center !important;
+}
+.nav-item a{
+  color: #a2a2a2 !important;
+}
+.alert {
+  padding: 2rem !important;
+  text-align: center !important;
+  border-radius: 0px !important;
+    font-weight: 900 !important;
+    opacity: 0.8 !important;
+    margin: 20px 0 !important; 
+    font-size: 14px !important;
+}
+select {
+  border-radius: 0 !important;
+  height: 50px !important;
+  padding: 12px !important;
+}
+h2, button {
+  font-weight: 900 !important;
+}
+
+#formGridFirst {
+  padding: 28px !important;
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  padding-left: 50px !important;
+}
+.input-group-append {
+  width: 60px;
+  height: 60px;
+  color: #666;
+  position: absolute !important;
+  right: 0 !important;
+  z-index: 2 !important;
+  font-size: 24px !important;
+}
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: none !important;
+  border-radius: 0 !important;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.btn-warning {
+  background: #f8d231 !important;
+}
+kbd{
+  padding: 5px !important;
+  margin: 0 2px !important;
+}
+input {
+  border-radius: 0 !important;
+}
+.btn {
+text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.dzu-dropzone .btn {
+  padding: 16px 24px !important;
+  border-radius: 0 !important;
+  font-size: 20px !important;
+}
+
+.badge {
+  border-radius: 0 !important;
+  padding: 8px !important;
+}
+
+.btn-sm {
+  padding: 8px !important;
+  border-radius: 0 !important;
+  font-size: 16px !important;
+}
+
+.card {
+  border: none !important;
+  color: #222 !important;
+  padding: 0 !important;
+}
+
+.dzu-dropzone {
+  color: #222 !important;
+  border: 0 dashed #ebebeb !important;
+  border-radius: 0 !important;
+}
+.expand-cell{
+  opacity: 'none' !important;
+}
+.alert-danger,.alert-sucess,.alert-warning {
+  text-align: center !important;
+}
+.lead {
+  opacity: 0.6;
+}
+.card-body{
+padding: 0 !important;
+}
+.progress{
+  height: 2rem !important;
+    border-radius: 0 !important;
+}
+.breadcrumb {
+  background: none;
+  border-bottom: 1px solid #ddd;
+}
+.breadcrumb  a{
+  text-transform: uppercase;
+  color: #222 !important;
+}
+.alert{
+  font-size: 16px !important;
+}
+table tr .badge svg{
+  display: none !important;
+}
+.ongoing {
+  float: left;
+  width: 100%;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding-top: 16px;
+  color: #222;
+}
+table tr {
+  background: #eee;
+  border-bottom: 1px solid #aaa;
+}
+.badge svg{
+  margin-right: '6px !important';
+}
+.badge-vocals {
+  background-color: #7c56c9;
+  color: white;
+}
+
+.badge-accomp {
+  background-color: #02acb4;
+  color: white;
+}
+
+.badge-piano {
+  background-color: #000000;
+  color: white;
+}
+
+.badge-drums {
+  background-color: #a8110d;
+  color: white;
+}
+
+.badge-bass {
+  background-color: #095ba4;
+  color: white;
+}
+
+.badge-vocals-faded {
+  background-color: #7c56c92c;
+  color: white;
+}
+
+.badge-accomp-faded {
+  background-color: #02abb42c;
+  color: white;
+}
+
+.badge-piano-faded {
+  background-color: #5454542c;
+  color: white;
+}
+
+.badge-drums-faded {
+  background-color: #a8120d2a;
+  color: white;
+}
+
+.badge-bass-faded {
+  background-color: #095ca428;
+  color: white;
+}
+
+.refresher {
+  display: flex;
+  padding: 4px 0px !important;
+  justify-content: flex-start;
+  position: relative !important;
+  width: 100% !important;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .btn-sm {
+      padding: 4px !important;
+      font-size: 14px !important;
+  }
+}
+#basic-addon1{
+  position: absolute;
+  background: transparent;
+  top: 0;
+  z-index: 2;
+  color: #222;
+  border: none;
+  font-size: 28px;
+  color: #ccc;
+  margin-top: 10px;
+}
+#button-addon2{
+  position: absolute;
+  right: 12px;
+  top: 15px;
+  font-size: 12px !important;
+}

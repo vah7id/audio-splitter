@@ -1,0 +1,12 @@
+services:
+  nginx:
+    restart: unless-stopped
+    environment:
+      - API_HOST=api
+      - ENABLE_HTTPS=1
+      - APP_HOST
+      - CERTBOT_DOMAIN
+      - CERTBOT_EMAIL
+      - UPLOAD_FILE_SIZE_LIMIT=${UPLOAD_FILE_SIZE_LIMIT:-100}
+    volumes:
+      - ./certbot/conf/:/etc/letsencrypt

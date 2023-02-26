@@ -1,0 +1,112 @@
+x-celery-env: &celery-env
+  - TF_CPP_MIN_LOG_LEVEL=2
+  - DJANGO_SETTINGS_MODULE=django_react.settings_docker
+  - CELERY_BROKER_URL=redis://redis:6379/0
+  - CELERY_RESULT_BACKEND=redis://redis:6379/0
+  - CPU_SEPARATION=1
+  - CELERY_FAST_QUEUE_CONCURRENCY=${CELERY_FAST_QUEUE_CONCURRENCY:-3}
+  - CELERY_SLOW_QUEUE_CONCURRENCY=${CELERY_SLOW_QUEUE_CONCURRENCY:-1}
+  - DEFAULT_FILE_STORAGE
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_STORAGE_BUCKET_NAME
+  - AWS_S3_CUSTOM_DOMAIN
+  - AZURE_ACCOUNT_KEY
+  - AZURE_ACCOUNT_NAME
+  - AZURE_CONTAINER
+  - AZURE_CUSTOM_DOMAIN
+  - D3NET_OPENVINO
+  - D3NET_OPENVINO_THREADS
+  - YOUTUBE_LENGTH_LIMIT
+services:
+  redis:
+    image: redis:6.0-buster
+    hostname: redis
+    expose:
+      - "6379"
+    volumes:
+      - redis-data:/data
+    restart: always
+  nginx:
+    image: jeffreyca/spleeter-web-nginx:${TAG:-latest}
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - staticfiles:/webapp/staticfiles
+    environment:
+      - API_HOST=api
+      - CERTBOT_DOMAIN=.
+      - CERTBOT_EMAIL=. # Dummy email (overridden by https.yml)
+      - UPLOAD_FILE_SIZE_LIMIT=${UPLOAD_FILE_SIZE_LIMIT:-100}
+    depends_on:
+      - api
+    restart: always
+  api:
+    image: jeffreyca/spleeter-web-backend:${TAG:-latest}
+    volumes:
+      - assets:/webapp/frontend/assets
+      - sqlite-data:/webapp/sqlite
+      - staticfiles:/webapp/staticfiles
+    stdin_open: true
+    tty: true
+    environment:
+      - TF_CPP_MIN_LOG_LEVEL=2
+      - DJANGO_SETTINGS_MODULE=django_react.settings_docker
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - CPU_SEPARATION=1
+      - ALLOW_ALL_HOSTS
+      - APP_HOST
+      - DEFAULT_FILE_STORAGE
+      - ENABLE_CROSS_ORIGIN_HEADERS
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_STORAGE_BUCKET_NAME
+      - AWS_S3_CUSTOM_DOMAIN
+      - AZURE_ACCOUNT_KEY
+      - AZURE_ACCOUNT_NAME
+      - AZURE_CONTAINER
+      - AZURE_CUSTOM_DOMAIN
+      - YOUTUBE_API_KEY
+      - UPLOAD_FILE_SIZE_LIMIT
+      - YOUTUBE_LENGTH_LIMIT
+    depends_on:
+      - redis
+      - frontend
+    restart: always
+  celery-fast:
+    image: jeffreyca/spleeter-web-backend:${TAG:-latest}
+    entrypoint: ./celery-fast-entrypoint.sh
+    volumes:
+      - celery-data:/webapp/celery
+      - pretrained-models:/webapp/pretrained_models
+      - sqlite-data:/webapp/sqlite
+    environment: *celery-env
+    depends_on:
+      - redis
+    dns:
+      - "8.8.8.8"
+    restart: always
+  celery-slow:
+    image: jeffreyca/spleeter-web-backend:${TAG:-latest}
+    entrypoint: ./celery-slow-entrypoint.sh
+    volumes:
+      - celery-data:/webapp/celery
+      - pretrained-models:/webapp/pretrained_models
+      - sqlite-data:/webapp/sqlite
+    environment: *celery-env
+    depends_on:
+      - redis
+    restart: always
+  frontend:
+    image: jeffreyca/spleeter-web-frontend:${TAG:-latest}
+    volumes:
+      - assets:/webapp/frontend/assets
+    stdin_open: true
+    tty: true
+volumes:
+  assets:
+  celery-data:
+  pretrained-models:
+  redis-data:
+  sqlite-data:
+  staticfiles:

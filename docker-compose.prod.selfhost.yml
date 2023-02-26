@@ -1,0 +1,13 @@
+services:
+  nginx:
+    volumes:
+      - ./media:/webapp/media
+  api:
+    volumes:
+      - ./media:/webapp/media
+  celery-fast:
+    volumes:
+      - ./media:/webapp/media
+  celery-slow:
+    volumes:
+      - ./media:/webapp/media
