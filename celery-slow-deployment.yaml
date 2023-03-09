@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /usr/local/bin/kompose convert -f docker-compose.yml -f docker-compose.build.yml -f docker-compose.prod.yml -f docker-compose.prod.selfhost.yml
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: celery-slow
+  name: celery-slow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: celery-slow
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /usr/local/bin/kompose convert -f docker-compose.yml -f docker-compose.build.yml -f docker-compose.prod.yml -f docker-compose.prod.selfhost.yml
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: celery-slow
+    spec:
+      containers:
+        - command:
+            - ./celery-slow-entrypoint.sh
+          env:
+            - name: CELERY_BROKER_URL
+              value: redis://redis:6379/0
+            - name: CELERY_FAST_QUEUE_CONCURRENCY
+              value: "3"
+            - name: CELERY_RESULT_BACKEND
+              value: redis://redis:6379/0
+            - name: CELERY_SLOW_QUEUE_CONCURRENCY
+              value: "1"
+            - name: CPU_SEPARATION
+              value: "1"
+            - name: DJANGO_SETTINGS_MODULE
+              value: django_react.settings_docker
+            - name: TF_CPP_MIN_LOG_LEVEL
+              value: "2"
+          image: jeffreyca/spleeter-web-backend:latest
+          name: celery-slow
+          resources: {}
+          volumeMounts:
+            - mountPath: /webapp/celery
+              name: celery-data
+            - mountPath: /webapp/pretrained_models
+              name: pretrained-models
+            - mountPath: /webapp/sqlite
+              name: sqlite-data
+            - mountPath: /webapp/media
+              name: celery-slow-claim3
+      restartPolicy: Always
+      volumes:
+        - name: celery-data
+          persistentVolumeClaim:
+            claimName: celery-data
+        - name: pretrained-models
+          persistentVolumeClaim:
+            claimName: pretrained-models
+        - name: sqlite-data
+          persistentVolumeClaim:
+            claimName: sqlite-data
+        - name: celery-slow-claim3
+          persistentVolumeClaim:
+            claimName: celery-slow-claim3
+status: {}

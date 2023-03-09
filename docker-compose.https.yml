@@ -1,3 +1,4 @@
+version: "3"
 services:
   nginx:
     restart: unless-stopped
@@ -5,6 +6,7 @@ services:
       - API_HOST=api
       - ENABLE_HTTPS=1
       - APP_HOST
+      - API_PORT
       - CERTBOT_DOMAIN
       - CERTBOT_EMAIL
       - UPLOAD_FILE_SIZE_LIMIT=${UPLOAD_FILE_SIZE_LIMIT:-100}
