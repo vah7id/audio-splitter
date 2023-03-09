@@ -431,7 +431,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
             <Breadcrumb style={{width: '100%', 
               float: 'left',
-                padding: '0 0 10px 0px',
+                opacity: 0.5,
                 marginTop: '150px',
                 opacity: 0.6,
                 fontSize: '13px',
