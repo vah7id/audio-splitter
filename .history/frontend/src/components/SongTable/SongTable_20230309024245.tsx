@@ -168,7 +168,7 @@ class SongTable extends React.Component<Props> {
                   progressColor: '#ffc107',
                   backend: 'MediaElement',
                 });
-                wavesurferInstance.load('http://34.23.101.28'+this.props.data[index].url)
+                wavesurferInstance.load('http://localhost'+this.props.data[index].url)
               }
             }
           })
