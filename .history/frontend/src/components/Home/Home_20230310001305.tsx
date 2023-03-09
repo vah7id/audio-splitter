@@ -439,13 +439,16 @@ class Home extends React.Component<RouteComponentProps, State> {
                 background: 'none'
               }}>
               <Breadcrumb.Item active href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/">
+                Terms & Conditions
+              </Breadcrumb.Item>
               <Breadcrumb.Item href="/">Vocal Remover</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Audio Splitter Tool</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Send us feedback</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Donate</Breadcrumb.Item>
             </Breadcrumb>
 
-            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made w love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
+            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made with love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
 
           </div>
         </div>

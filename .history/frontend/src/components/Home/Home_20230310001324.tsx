@@ -445,7 +445,7 @@ class Home extends React.Component<RouteComponentProps, State> {
               <Breadcrumb.Item href="/">Donate</Breadcrumb.Item>
             </Breadcrumb>
 
-            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made w love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
+            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made with love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
 
           </div>
         </div>

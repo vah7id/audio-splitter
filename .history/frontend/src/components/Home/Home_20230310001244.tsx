@@ -379,7 +379,7 @@ class Home extends React.Component<RouteComponentProps, State> {
         <div className="jumbotron jumbotron-fluid bg-transparent">
           <div className="container secondary-color" style={{maxWidth: '920px'}}>
             <div class style={{width: '100%', display: 'block', textAlign: 'center', marginBottom: '32px'}}>
-            <a href="/"><img style={{display: 'block', margin: '0 auto', width: '250px'}} src="https://i.ibb.co/t2QPMwM/Screenshot-2023-03-09-at-21-17-27.png" alt="mikrotakt logo" /></a>
+            <a href="/"><img style={{display: 'block', margin: '0 auto'}} src="https://i.ibb.co/t2QPMwM/Screenshot-2023-03-09-at-21-17-27.png" alt="mikrotakt logo" /></a>
               <h2 className="display-5">Vocal Remover and Audio Splitter AI</h2>
               <p style={{maxWidth: '620px',margin: '0 auto 20px auto', fontSize: '1rem'}} className="lead">Separate vocal, accompaniment, bass, and/or drum components of any song using powerful AI algorithms and yes its FREE!!</p>
               <Nav className="justify-content-center" activeKey="/home">
@@ -439,13 +439,16 @@ class Home extends React.Component<RouteComponentProps, State> {
                 background: 'none'
               }}>
               <Breadcrumb.Item active href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/">
+                Terms & Conditions
+              </Breadcrumb.Item>
               <Breadcrumb.Item href="/">Vocal Remover</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Audio Splitter Tool</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Send us feedback</Breadcrumb.Item>
               <Breadcrumb.Item href="/">Donate</Breadcrumb.Item>
             </Breadcrumb>
 
-            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made w love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
+            <p style={{marginBottom: '40px',width: '100%', opacity: 0.3, textTransform: 'uppercase', fontSize: '12px', float: 'left'}}>Made with love in Amsterdam XXX . Copyright @2023 All Rights Reserved</p>
 
           </div>
         </div>
