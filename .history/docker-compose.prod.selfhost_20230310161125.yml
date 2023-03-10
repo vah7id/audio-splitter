@@ -1,0 +1,13 @@
+services:
+  nginx:
+    volumes:
+      - ./media:/home/palm0101_book/audio-splitter/media
+  api:
+    volumes:
+      - ./media:/home/palm0101_book/audio-splitter/media
+  celery-fast:
+    volumes:
+      - ./media:/home/palm0101_book/audio-splitter/media
+  celery-slow:
+    volumes:
+      - ./media:/home/palm0101_book/audio-splitter/media
